@@ -45,23 +45,25 @@ Ho, quindi, corretto la ridondanza nel codice originale utilizzando ora_attuale 
 
 Codice da me rivisto:
 
+print("Benvenuto su Assistente Virtuale creato da Fabrizio.\n")
+
 import datetime
 
 def assistente_virtuale(opzione):
     if opzione == "1":
         oggi = datetime.date.today()
-        risposta = "La data di oggi è " + oggi.strftime("%d/%m/%Y")
+        risposta = "\nLa data di oggi è " + oggi.strftime("%d/%m/%Y")
     elif opzione == "2":
         ora_attuale = datetime.datetime.now().strftime("%H:%M")
-        risposta = "L'ora attuale è " + ora_attuale
+        risposta = "\nL'ora attuale è " + ora_attuale
     elif opzione == "3":
-        risposta = "Mi chiamo Assistente Virtuale"
+        risposta = "\nMi chiamo Assistente Virtuale"
     else:
-        risposta = "Inserisci una delle opzioni disponibili. Riprova."
+        risposta = "\nInserisci una delle opzioni disponibili. Riprova."
     return risposta
 
 def mostra_menu():
-    print("\nCosa vuoi sapere?")
+    print("\nCosa vuoi sapere?\n")
     print("1. Qual è la data di oggi?")
     print("2. Che ore sono?")
     print("3. Come mi chiamo?")
@@ -69,9 +71,9 @@ def mostra_menu():
 
 while True:
     mostra_menu()
-    scelta = input("Seleziona un'opzione (1-4): ").strip()
+    scelta = input("\nSeleziona un'opzione (1-4): ").strip()
     if scelta == "4":
-        print("Arrivederci!")
+        print("\nArrivederci!")
         break
     else:
         print(assistente_virtuale(scelta))
