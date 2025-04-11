@@ -21,7 +21,7 @@ while True  # * errore 2
 
 ___________________
 
-Cosa fa il programma: il programma si propone come un assistente virtuale basico e permette all'utente, scegliendo tra 3 opzioni, di conoscere la data odierna, l'ora esatta espressa in ore e minuti (questi ultimi dati vengono richiamati utilizzando la libreria datetime, che viene infatti importata all'inizio dedl codice) ed il nome dell'assistente stesso. Tuttavia, è da notare a livello progettuale del codice che le opzioni a disposizione dell'utente non sono esplicitate e, quindi, così com'è scritto, è improbabile che l'utente possa richiamare le opzioni previste in modo corretto. Più avanti si propone una soluzione più user-friendly.
+Cosa fa il programma: il programma si propone come un assistente virtuale basico e permette all'utente, scegliendo tra 3 opzioni, di conoscere la data odierna, l'ora esatta espressa in ore e minuti (questi ultimi dati vengono richiamati utilizzando la libreria datetime, che viene infatti importata all'inizio del codice) ed il nome dell'assistente stesso. Tuttavia, è da notare a livello progettuale del codice che le opzioni a disposizione dell'utente non sono esplicitate e, quindi, così com'è scritto, è improbabile che l'utente possa richiamare le opzioni previste in modo corretto. Più avanti si propone una soluzione più user-friendly.
 
 Espongo di seguito il codice passaggio per passaggio contando gli errori e semplificazioni che si potrebbero apportare:
 
