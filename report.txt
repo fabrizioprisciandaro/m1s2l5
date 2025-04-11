@@ -1,0 +1,77 @@
+import datetime
+def assistente_virtuale(comando):
+    if comando == "Qual è la data di oggi?":
+        oggi = datetime.datetoday()  # * errore 1
+        risposta = "La data di oggi è " + oggi.strftime("%d/%m/%Y")
+    elif comando == "Che ore sono?":
+        ora_attuale = datetime.datetime.now().time()
+        risposta = "L'ora attuale è " + ora_attuale.strftime("%H:%M")
+    elif comando == "Come ti chiami?":
+        risposta = "Mi chiamo Assistente Virtuale"
+    else:
+        risposta = "Non ho capito la tua domanda."
+    return risposta
+while True  # * errore 2
+    comando_utente = input("Cosa vuoi sapere? ")
+    if comando_utente.lower() == "esci":
+        print("Arrivederci!")
+        break
+    else:
+        print(assistente_virtuale(comando_utente))
+
+___________________
+
+Cosa fa il programma: il programma si propone come un assistente virtuale basico e permette all'utente, scegliendo tra 3 opzioni, di conoscere la data odierna, l'ora esatta espressa in ore e minuti (questi ultimi dati vengono richiamati utilizzando la libreria datetime, che viene infatti importata all'inizio dedl codice) ed il nome dell'assistente stesso. Tuttavia, è da notare a livello progettuale del codice che le opzioni a disposizione dell'utente non sono esplicitate e, quindi, così com'è scritto, è improbabile che l'utente possa richiamare le opzioni previste in modo corretto. Più avanti si propone una soluzione più user-friendly.
+
+Espongo di seguito il codice passaggio per passaggio contando gli errori e semplificazioni che si potrebbero apportare:
+
+1. Errore di sintassi : errata chiamata alla funzione: datetime.datetoday() non esiste . La versione corretta è datetime.date.today()
+
+2. Errore di sintassi: due punti mancanti dopo il ciclo while True . La versione corretta è while True:
+
+Questi ultimi due sono errori da correggere assolutamente, altrimenti il programma non funziona. La correzione dei restanti errori riportati di seguito serve solo a migliorare l'esperienza utente e la performance del codice.
+
+3. Ridondanza nel codice. Si può importare solo ciò che serve da datetime, utilizzando ora_attuale = datetime.datetime.now().strftime("%H:%M")
+
+4. A livello esperienza utente, si potrebbero inserire delle opzioni per aiutarlo a capire come interagire con il programma, oppure dare la possibilità all'utente di poter inserire la sua richiesta in modo più flessibile anzichè scrivere la stringa esatta (in quanto l'utente non può sapere come abbiamo impostato la stringa).
+
+____________________
+
+Ho corretto i 2 errori principali di sintassi: l'errore nel metodo datetime.datetoday() dove la funzione corretta per ottenere la data odierna è datetime.date.today() e l'errore relativo al ciclo while scritto senza i due punti alla fine della dichiarazione che impediscono a Python di sapere cosa eseguire dopo. Entrambi non permettevano l'esecuzione del programma.
+
+Ho deciso di implementare tramite l'uso della funzione (opzione) un menù con 3 opzioni, più la gestione dell'errore utente in cui si potrebbe verificare la condizione in cui quest'ultimo inserisce un valore diverso da quello atteso. In questo modo l'esperienza utente risulta migliorata e lo stesso saprà esattamente cosa fare una volta eseguito il codice.
+
+Ho, quindi, corretto la ridondanza nel codice originale utilizzando ora_attuale = datetime.datetime.now().strftime("%H:%M")
+
+Codice da me rivisto:
+
+import datetime
+
+def assistente_virtuale(opzione):
+    if opzione == "1":
+        oggi = datetime.date.today()
+        risposta = "La data di oggi è " + oggi.strftime("%d/%m/%Y")
+    elif opzione == "2":
+        ora_attuale = datetime.datetime.now().strftime("%H:%M")
+        risposta = "L'ora attuale è " + ora_attuale
+    elif opzione == "3":
+        risposta = "Mi chiamo Assistente Virtuale"
+    else:
+        risposta = "Inserisci una delle opzioni disponibili. Riprova."
+    return risposta
+
+def mostra_menu():
+    print("\nCosa vuoi sapere?")
+    print("1. Qual è la data di oggi?")
+    print("2. Che ore sono?")
+    print("3. Come mi chiamo?")
+    print("4. Esci")
+
+while True:
+    mostra_menu()
+    scelta = input("Seleziona un'opzione (1-4): ").strip()
+    if scelta == "4":
+        print("Arrivederci!")
+        break
+    else:
+        print(assistente_virtuale(scelta))
